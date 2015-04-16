@@ -56,7 +56,9 @@ module cube_top(ClkPort,                                    // System Clock
 	BUF BUF2 (board_clk, ClkPort);
 	assign Clk = board_clk;
 	
-	conway_sim conway(.Clk(Clk), .Cells(Cells));
+	assign Reset = BtnC;
+	
+	conway_sim conway(.Clk(Clk), .Cells(Cells), .Reset(Reset), .BtnL(BtnL), .BtnR(BtnR), .Sw0(Sw0));
 	
 	cube_output cube(.Clk(Clk), .Cells(Cells), .Pins(Pins));
 
