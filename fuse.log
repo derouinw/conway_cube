@@ -1,0 +1,20 @@
+Running: C:\Xilinx\13.4\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/Users/Administrator/Documents/conway_cube/cube_tb_isim_beh.exe -prj C:/Users/Administrator/Documents/conway_cube/cube_tb_beh.prj work.cube_tb work.glbl 
+ISim O.87xd (signature 0xc3576ebc)
+Number of CPUs detected in this system: 1
+Turning on mult-threading, number of parallel sub-compilation jobs: 0 
+Determining compilation order of HDL files
+Analyzing Verilog file "C:/Users/Administrator/Documents/conway_cube/conway_sim.v" into library work
+Analyzing Verilog file "C:/Users/Administrator/Documents/conway_cube/cube_tb.v" into library work
+Analyzing Verilog file "C:/Xilinx/13.4/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Starting static elaboration
+WARNING:HDLCompiler:329 - "C:/Users/Administrator/Documents/conway_cube/cube_tb.v" Line 27: Target <cells_tb> of concurrent assignment or output port connection should be a net type.
+WARNING:HDLCompiler:189 - "C:/Users/Administrator/Documents/conway_cube/cube_tb.v" Line 27: Size mismatch in connection of port <Cells>. Formal port size is 1-bit while actual signal size is 512-bit.
+Completed static elaboration
+Compiling module conway_sim
+Compiling module cube_tb
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Compiled 3 Verilog Units
+Built simulation executable C:/Users/Administrator/Documents/conway_cube/cube_tb_isim_beh.exe
+Fuse Memory Usage: 26348 KB
+Fuse CPU Usage: 327 ms

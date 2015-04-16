@@ -21,8 +21,48 @@
 
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="Cube.xise"/>
 
-  <files xmlns="http://www.xilinx.com/XMLSchema"/>
+  <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="_stx_beh.prj"/>
+    <file xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
+  </files>
 
-  <transforms xmlns="http://www.xilinx.com/XMLSchema"/>
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1429157371" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1429157371">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1429157416" xil_pn:in_ck="-7950162822551595619" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1429157416">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="conway_sim.v"/>
+      <outfile xil_pn:name="cube_output.v"/>
+      <outfile xil_pn:name="cube_tb.v"/>
+      <outfile xil_pn:name="cube_top.v"/>
+    </transform>
+    <transform xil_pn:end_ts="1429157416" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="8858319101429872235" xil_pn:start_ts="1429157416">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1429157416" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="7798411828043744297" xil_pn:start_ts="1429157416">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1429157371" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="2622978147932418037" xil_pn:start_ts="1429157371">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1429157416" xil_pn:in_ck="-7950162822551595619" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1429157416">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="conway_sim.v"/>
+      <outfile xil_pn:name="cube_output.v"/>
+      <outfile xil_pn:name="cube_tb.v"/>
+      <outfile xil_pn:name="cube_top.v"/>
+    </transform>
+    <transform xil_pn:end_ts="1429157418" xil_pn:in_ck="-7950162822551595619" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-8977614189201559979" xil_pn:start_ts="1429157416">
+      <status xil_pn:value="FailedRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+  </transforms>
 
 </generated_project>

@@ -18,26 +18,29 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module conway_sim(Clk, Cells, Reset, BtnL, BtnR, Sw0);
+module conway_sim(Clk, Cells, Reset, BtnL, BtnR, Sw0, q_setup, q_simul, q_pause);
 	 
 	 input Clk, Reset, BtnL, BtnR, Sw0;
-	 output Cells;
+	 output Cells, q_setup, q_simul, q_pause;
 	 
 	 reg [511:0] sim_cells;
-	 reg q_setup, q_simul, q_pause;
-	 reg [2:0] state;
+	 wire Q_setup, Q_simul, Q_pause;
+	 reg [2:0] State;
 	 
 	 assign Cells = sim_cells;
-	 assign { q_setup, q_simul, q_pause } = State;
+	 assign { Q_setup, Q_simul, Q_pause } = State;
+	 assign q_setup = Q_setup;
+	 assign q_simul = Q_simul;
+	 assign q_pause = Q_pause;
 	 assign End = BtnL;
 	 assign Start = BtnR;
 	 assign Running = Sw0;
 	 
 	 // States
 	 localparam
-			Q_SETUP = 2'b100,
-			Q_SIMUL = 2'b010,
-			Q_PAUSE = 2'b001;
+			Q_SETUP = 3'b100,
+			Q_SIMUL = 3'b010,
+			Q_PAUSE = 3'b001;
 			
 	 // Main loop
 	 always @(posedge Clk, posedge Reset)
