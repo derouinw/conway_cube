@@ -20,12 +20,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 module cube_tb;
 
-	reg Clk_tb, Reset_tb, BtnL_tb, BtnR_tb, Sw0_tb;
+	reg Clk_tb, Reset_tb, BtnL_tb, BtnR_tb, Sw0_tb, Sw1_tb;
 	wire q_setup_tb, q_simul_tb, q_pause_tb;
-	reg [511:0] cells_tb;
+	wire [511:0] cells_tb;
 
 	conway_sim UUT (.Clk(Clk_tb), .Cells(cells_tb), .Reset(Reset_tb), .BtnL(BtnL_tb), .BtnR(BtnR_tb), .Sw0(Sw0_tb),
-							.q_setup(q_setup_tb), .q_simul(q_simul_tb), .q_pause(q_pause_tb));
+							.Sw1(Sw1_tb), .q_setup(q_setup_tb), .q_simul(q_simul_tb), .q_pause(q_pause_tb));
 
 	initial
 	begin
@@ -34,6 +34,7 @@ module cube_tb;
 		BtnL_tb = 0;
 		BtnR_tb = 0;
 		Sw0_tb = 1;
+		Sw1_tb = 0;
 	end
 	
 	always
@@ -50,14 +51,14 @@ module cube_tb;
 		BtnR_tb = 1;
 		#20;
 		BtnR_tb = 0;
-		#50;
-		Sw0_tb = 0;
-		#20;
-		Sw0_tb = 1;
-		#50
+		#500;
 		BtnL_tb = 1;
+		Sw1_tb = 0;
 		#20;
-		BtnL_tb = 0;
+		BtnR_tb = 1;
+		#50;
+		BtnR_tb = 0;
+		#1000;
 		
 	end	
 
