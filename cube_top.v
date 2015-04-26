@@ -20,19 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 module cube_top(ClkPort,                                    // System Clock
         MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS,
-        BtnL, BtnU, BtnR, BtnD, BtnC,	             // the Left, Up, Right, Down, and Center buttons
-        Sw0, Sw1, Sw2, Sw3, Sw4, Sw5, Sw6, Sw7,     // 8 Switches
-        Ld0, Ld1, Ld2, Ld3, Ld4, Ld5, Ld6, Ld7,     // 8 LEDs
-		  An0, An1, An2, An3,                         // 4 seven-LEDs
-		  Ca, Cb, Cc, Cd, Ce, Cf, Cg, Dp
+        BtnL, BtnC, BtnR,	             // the Left and Right buttons
+        Sw0, Sw1,     // 2 Switches
 		  );
                                     
 	input    ClkPort;
-	input    BtnL, BtnU, BtnD, BtnR, BtnC;
-	input    Sw0, Sw1, Sw2, Sw3, Sw4, Sw5, Sw6, Sw7;
-	output   Ld0, Ld1, Ld2, Ld3, Ld4,Ld5, Ld6, Ld7;
-	output   An0, An1, An2, An3;
-	output   Ca, Cb, Cc, Cd, Ce, Cf, Cg, Dp;
+	input    BtnL, BtnR, BtnC;
+	input    Sw0, Sw1;
 	  
 	// ROM drivers: Control signals on Memory chips (to disable them) 	
 	output 	MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS;  
