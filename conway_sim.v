@@ -144,7 +144,7 @@ module conway_sim(Clk, Cells, Reset, BtnL, BtnR, Sw0, Sw1, q_setup, q_simul, q_p
 		end
 	 end
 
-	function num_neighbors;
+	function integer num_neighbors;
 		input x, y, z;
 		integer t, u, v, min_x, max_x, min_y, max_y, min_z, max_z;
 		

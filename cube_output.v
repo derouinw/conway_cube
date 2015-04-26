@@ -20,12 +20,22 @@
 //////////////////////////////////////////////////////////////////////////////////
 module cube_output(Cells, Clk, Pins);
 	input Clk;
-	input Cells;
+	input[511:0] Cells;
 
-	output Pins;
+	output[20:0] Pins;
 	
 	reg[20:0] outputs;
 	
 	assign Pins = outputs;
+	
+	always @(posedge Clk)
+	begin
+		outputs[0] <= ~outputs[0];
+	end
+	
+	initial
+	begin
+		outputs = 0;
+	end
 
 endmodule

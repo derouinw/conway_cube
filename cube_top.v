@@ -40,7 +40,7 @@ module cube_top(ClkPort,                                    // System Clock
 	// Disable the three memories so that they do not interfere with the rest of the design.
 	assign {MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS} = 5'b11111;
 	
-	reg[511:0] Cells;
+	wire[511:0] Cells;
 	wire board_clk;
 	wire Clk;
 	
@@ -58,7 +58,7 @@ module cube_top(ClkPort,                                    // System Clock
 	
 	assign Reset = BtnC;
 	
-	conway_sim conway(.Clk(Clk), .Cells(Cells), .Reset(Reset), .BtnL(BtnL), .BtnR(BtnR), .Sw0(Sw0));
+	conway_sim conway(.Clk(Clk), .Cells(Cells), .Reset(Reset), .BtnL(BtnL), .BtnR(BtnR), .Sw0(Sw0), .Sw1(Sw1));
 	
 	cube_output cube(.Clk(Clk), .Cells(Cells), .Pins(Pins));
 
