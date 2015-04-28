@@ -44,16 +44,14 @@ module cube_output(Cells, Clk, Pins);
 	wire[14:0] outputs;
 	assign Pins = outputs;
 	
+	reg[7:0] data = 0;
+	assign outputs[7:0] = data;
+	
 	reg[2:0] layer = 0;
-	assign outputs[0] = layer[0];
-	assign outputs[1] = layer[1];
-	assign outputs[2] = layer[2];
+	assign outputs[10:8] = layer;
 	
 	reg[2:0] row = 0;
-	assign outputs[5:3] = row;
-	
-	reg[7:0] data = 0;
-	assign outputs[13:6] = data;
+	assign outputs[13:11] = row;
 	
 	reg enable = 0;
 	assign outputs[14] = enable;

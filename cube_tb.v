@@ -39,7 +39,7 @@ module cube_tb;
 		BtnL_tb = 0;
 		BtnR_tb = 0;
 		Sw0_tb = 1;
-		Sw1_tb = 1;
+		Sw1_tb = 0;
 		slow_count = 0;
 		slow_clk = 0;
 	end
