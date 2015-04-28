@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "C:/Users/Administrator/Documents/conway_cube/cube_output_isim_beh.exe" -prj "C:/Users/Administrator/Documents/conway_cube/cube_output_beh.prj" "work.cube_output" "work.glbl" 
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "C:/Users/Administrator/Documents/conway_cube/cube_tb_isim_beh.exe" -prj "C:/Users/Administrator/Documents/conway_cube/cube_tb_beh.prj" "work.cube_tb" "work.glbl" 

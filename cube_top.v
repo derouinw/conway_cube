@@ -39,7 +39,7 @@ module cube_top(ClkPort,                                    // System Clock
 	wire Clk;
 	
 	// Wire outputs to cube
-	wire[20:0] Pins;
+	wire[14:0] Pins;
 	
 	//------------ 
 	// ClkPort travels throughout our design,

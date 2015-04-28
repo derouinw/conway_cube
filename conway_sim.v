@@ -74,7 +74,7 @@ module conway_sim(Clk, Cells, Reset, BtnL, BtnR, Sw0, Sw1, q_setup, q_simul, q_p
 			State <= Q_SETUP;
 			layer <= 0;
 			for (i = 0; i < 512; i = i+1)
-				sim_cells[i] <= 0;
+				sim_cells[i] <= $random;
 		end
 		else
 		begin

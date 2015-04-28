@@ -20,12 +20,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 module cube_tb;
 
-	reg Clk_tb, Reset_tb, BtnL_tb, BtnR_tb, Sw0_tb, Sw1_tb;
+	reg Clk_tb, Reset_tb, BtnL_tb, BtnR_tb, Sw0_tb, Sw1_tb, slow_clk;
 	wire q_setup_tb, q_simul_tb, q_pause_tb;
 	wire [511:0] cells_tb;
+	wire [511:0] cells_out;
+	assign cells_out = cells_tb;
+	wire[14:0] pins_tb;
+	integer slow_count;
 
-	conway_sim UUT (.Clk(Clk_tb), .Cells(cells_tb), .Reset(Reset_tb), .BtnL(BtnL_tb), .BtnR(BtnR_tb), .Sw0(Sw0_tb),
+	conway_sim UUT (.Clk(slow_clk), .Cells(cells_tb), .Reset(Reset_tb), .BtnL(BtnL_tb), .BtnR(BtnR_tb), .Sw0(Sw0_tb),
 							.Sw1(Sw1_tb), .q_setup(q_setup_tb), .q_simul(q_simul_tb), .q_pause(q_pause_tb));
+	cube_output out (.Clk(Clk_tb), .Cells(cells_out), .Pins(pins_tb));
 
 	initial
 	begin
@@ -34,31 +39,33 @@ module cube_tb;
 		BtnL_tb = 0;
 		BtnR_tb = 0;
 		Sw0_tb = 1;
-		Sw1_tb = 0;
+		Sw1_tb = 1;
+		slow_count = 0;
+		slow_clk = 0;
 	end
 	
 	always
 	begin
 		#10;
 		Clk_tb = ~Clk_tb;
+		if (slow_count == 64)
+		begin
+			slow_count = 0;
+			slow_clk = ~slow_clk;
+		end
+		else
+			slow_count = slow_count + 1;
 	end
 
 	initial
 	begin
-		#30;
+		#300;
 		Reset_tb = 0;
 		#50;
 		BtnR_tb = 1;
-		#20;
-		BtnR_tb = 0;
-		#500;
-		BtnL_tb = 1;
-		Sw1_tb = 0;
-		#20;
-		BtnR_tb = 1;
-		#50;
-		BtnR_tb = 0;
 		#1000;
+		BtnR_tb = 0;
+		#5000;
 		
 	end	
 
