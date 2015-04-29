@@ -18,9 +18,9 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module conway_sim(Clk, Cells, Reset, BtnL, BtnR, Sw0, Sw1, q_setup, q_simul, q_pause);
+module conway_sim(Clk, Cells, Reset, BtnL, BtnR, Sw0, Sw1, Sw2, q_setup, q_simul, q_pause);
 	 
-	 input Clk, Reset, BtnL, BtnR, Sw0, Sw1;
+	 input Clk, Reset, BtnL, BtnR, Sw0, Sw1, Sw2;
 	 output q_setup, q_simul, q_pause;
 	 output [511:0] Cells;
 	 
@@ -28,6 +28,9 @@ module conway_sim(Clk, Cells, Reset, BtnL, BtnR, Sw0, Sw1, q_setup, q_simul, q_p
 	 wire Q_setup, Q_simul, Q_pause;
 	 reg [2:0] State;
 	 reg mode;
+	 
+	 wire random = 0;
+	 //random mod_rand(.reset(Reset), .rand(random));
 	 
 	 assign Cells = sim_cells;
 	 assign { Q_setup, Q_simul, Q_pause } = State;
@@ -67,14 +70,12 @@ module conway_sim(Clk, Cells, Reset, BtnL, BtnR, Sw0, Sw1, q_setup, q_simul, q_p
 	 integer neighbors;
 			
 	 // Main loop
-	 always @(posedge Clk, posedge Reset)
+	 always @(posedge Clk, negedge Reset)
 	 begin
-		if (Reset)
+		if (~Reset)
 		begin
 			State <= Q_SETUP;
 			layer <= 0;
-			for (i = 0; i < 512; i = i+1)
-				sim_cells[i] <= 0;
 		end
 		else
 		begin
@@ -89,6 +90,16 @@ module conway_sim(Clk, Cells, Reset, BtnL, BtnR, Sw0, Sw1, q_setup, q_simul, q_p
 						mode <= M_CONWAY;
 					else
 						mode <= M_LAYERS;
+						
+					// init cells
+					if (mode == M_LAYERS)
+						for (i = 0; i < 512; i = i+1)
+							sim_cells[i] <= 0;
+					else 
+						if (Sw2)
+							sim_cells <= 512'h00b40ba1a03fd268da4f3309e7f32bddb7de89ea1d6886e375aec3a342151187f124830b3723be85a675c8db7699de0c668ae89cfac53ebac16d8976152c469e; // random number!
+						else
+							sim_cells <= 512'h1A7C5A1ED83C2DC55B13068067015386D9A889D09DECB4CEEAF52DEFF2A6B91203AF7B8CE19EA4BDCDD3740DD47E8BAD3A61F6696F83546E6CB86A46FD4F9A93;
 				end
 				Q_SIMUL:
 				begin
@@ -167,5 +178,20 @@ module conway_sim(Clk, Cells, Reset, BtnL, BtnR, Sw0, Sw1, q_setup, q_simul, q_p
 							num_neighbors = num_neighbors + 1;
 		end
 	endfunction
+
+endmodule
+
+module random(reset, rand);
+	input reset;
+	output rand;
+	
+	reg rand_in;
+	assign rand = rand_in;
+	
+	always @(negedge reset)
+		rand_in <= 0;
+		
+	always @(*)
+		rand_in <= ~rand_in;
 
 endmodule
